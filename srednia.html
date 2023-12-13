@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator średniej</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            text-align: center;
+            padding: 10px;
+            background-color: #3498db;
+            color: #ffffff;
+        }
+
+        section {
+            margin: 20px 0;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #3498db;
+            color: #ffffff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #3498db;
+            color: #ffffff;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Kalkulator średniej</h1>
+    </header>
+
+    <section>
+        <label for="grades">Podaj oceny (oddzielone przecinkami):</label>
+        <input type="text" id="grades" placeholder="np. 4.5, 3.0, 5.0">
+
+        <button onclick="calculateAverage()">Oblicz średnią</button>
+
+        <p id="result"></p>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Kalkulator średniej</p>
+    </footer>
+
+    <script>
+        function calculateAverage() {
+            var gradesInput = document.getElementById('grades').value;
+            var gradesArray = gradesInput.split(',').map(function(item) {
+                return parseFloat(item);
+            });
+
+            var sum = gradesArray.reduce(function(total, grade) {
+                return total + grade;
+            }, 0);
+
+            var average = sum / gradesArray.length;
+
+            var resultElement = document.getElementById('result');
+            resultElement.textContent = 'Średnia ocen: ' + average.toFixed(2);
+        }
+    </script>
+
+</body>
+</html>
